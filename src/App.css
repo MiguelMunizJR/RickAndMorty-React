@@ -1,9 +1,22 @@
 :root {
-  color-scheme: dark;
-  --color-primary: #222629;
-  --color-secundary: #84a7229c;
+  --color-primary: radial-gradient(
+    circle,
+    #222629,
+    #1f272a,
+    #1d282a,
+    #1c2928,
+    #1c2a25,
+    #1c2c24,
+    #1d2f23,
+    #1f3121,
+    #1f3621,
+    #203b21,
+    #204121,
+    #214620
+  );
+  --color-secundary: #84a722bb;
   --color-font-primary: #f3f5f3;
-  --color-input: #22a7220a;
+  --color-input: #22a7222d;
   --color-shadow: #101114;
 }
 
@@ -13,6 +26,7 @@
 }
 
 footer {
+  margin-top: 1rem;
   padding: 0.5rem;
   font-size: 0.9rem;
   font-weight: 200;
@@ -25,7 +39,7 @@ footer {
   align-items: center;
   font-family: "Noto Sans", sans-serif;
   color: var(--color-font-primary);
-  background-color: var(--color-primary);
+  background-image: var(--color-primary);
 }
 
 .App__header {
@@ -43,19 +57,19 @@ footer {
   padding: 2rem;
   width: 70vw;
   min-width: max-content;
-  min-height: 28rem;
+  min-height: 15rem;
   display: grid;
   justify-items: center;
   grid-template-columns: repeat(3, 1fr);
-  background-color: #1f2325;
+  background-color: #1f242550;
   border-radius: 0.5rem;
   row-gap: 3rem;
 }
 
-.population {
+.empty {
+  grid-column: 2;
   align-self: center;
-  justify-self: center;
-  display: none;
+  font-weight: 300;
 }
 
 .search {
@@ -75,7 +89,7 @@ footer {
 .search input {
   padding: 0.2rem;
   width: 20rem;
-  height: 1.5rem;
+  height: 2rem;
   font-size: 1rem;
   font-family: "DynaPuff", cursive;
   text-align: center;
@@ -88,7 +102,7 @@ footer {
 
 .search button {
   width: 5rem;
-  height: 2rem;
+  height: 2.5rem;
   font-size: 1rem;
   font-family: "DynaPuff", cursive;
   color: var(--color-font-primary);
@@ -104,8 +118,8 @@ footer {
 }
 
 .shuffle {
-  width: 2rem;
-  height: 2rem;
+  width: 2.5rem;
+  height: 2.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -131,8 +145,8 @@ footer {
 }
 
 .location__title {
-  font-size: 1.7rem;
-  font-weight: 400;
+  font-size: 1.8rem;
+  font-weight: 600;
 }
 
 .location__container ul {
@@ -159,11 +173,18 @@ footer {
   align-items: center;
   background-image: radial-gradient(
     circle,
-    #1d1f1c,
-    #191c1b,
-    #171919,
-    #151516,
-    #121212
+    #1e2123,
+    #1e2223,
+    #1e2323,
+    #1e2323,
+    #1f2422,
+    #1f2421,
+    #1f2521,
+    #202520,
+    #1f2520,
+    #1f261f,
+    #1e261f,
+    #1d271f
   );
   border: 1px solid;
   border-radius: 0.5rem;
@@ -177,7 +198,7 @@ footer {
 }
 
 .Card__status {
-  margin-top: 1rem;
+  margin-top: 0.8rem;
   padding: 2px;
   width: 7rem;
   position: absolute;
@@ -203,10 +224,13 @@ footer {
 }
 
 .Card__title {
-  margin: 0.3rem 0 1rem;
+  margin: -0.3rem auto 1rem;
+  padding: 0.2rem 0;
+  width: 100%;
   text-align: center;
   font-size: 1.2rem;
-  border-bottom: 1px solid var(--color-secundary);
+  font-weight: 500;
+  background-color: var(--color-secundary);
 }
 
 .Card ul {
@@ -232,29 +256,35 @@ footer {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
   align-items: center;
+  background-image: radial-gradient(
+    circle,
+    #222629,
+    #1f272a,
+    #1d282a,
+    #1c2928,
+    #1c2a25,
+    #1c2c24,
+    #1d2f23,
+    #1f3121,
+    #1f3621,
+    #203b21,
+    #204121,
+    #214620
+  );
 }
 
-.loading__img {
-  width: 70vw;
-  height: 20rem;
-  background-image: url("./assets/img/Loading.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  animation: img 2s alternate infinite;
+.loading__title {
+  width: 35rem;
+  height: 15rem;
+  display: flex;
 }
 
-.loading__circle {
-  width: 4rem;
-  height: 4rem;
-  border: 3px solid;
-  border-radius: 50%;
-  border-top-color: transparent;
-  border-left-color: var(--color-secundary);
-  border-right-color: var(--color-secundary);
-  border-bottom-color: var(--color-secundary);
-  animation: loading 1s linear infinite;
+.loading__circle img {
+  width: 27rem;
+  height: 15rem;
+  filter: drop-shadow(2px 2px 5px #222);
+  animation: loading 2s linear infinite;
 }
 
 @keyframes loading {
@@ -264,15 +294,5 @@ footer {
 
   100% {
     transform: rotate(360deg);
-  }
-}
-
-@keyframes img {
-  0% {
-    transform: scale(0.8);
-  }
-
-  100% {
-    transform: scale(1);
   }
 }

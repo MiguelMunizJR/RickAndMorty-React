@@ -13,6 +13,8 @@ function App() {
   const [search, setSearch] = useState("");
   const [shuffle, setShuffle] = useState(true);
   const [loading, setLoading] = useState();
+  const [isEmpty, setIsEmpty] = useState(false);
+  const [population, setPopulation] = useState();
 
   useEffect(() => {
     if (search === "") {
@@ -28,9 +30,20 @@ function App() {
     const API = `https://rickandmortyapi.com/api/location/${ID}`;
     axios
       .get(API)
-      .then((res) => setLocation(res.data))
+      .then((res) => {
+        setLocation(res.data);
+        setPopulation(location?.residents.length);
+      })
       .catch((err) => console.log(err));
   }, [search, shuffle]);
+
+  useEffect(() => {
+    if (location?.residents.length === 0) {
+      setIsEmpty(true);
+    } else {
+      setIsEmpty(false);
+    }
+  }, [population, location]);
 
   useEffect(() => {
     loadingTimeout();
@@ -73,8 +86,7 @@ function App() {
             <input
               id="search"
               type="text"
-              placeholder="Search with number ID:
-"
+              placeholder="Search with number ID:"
             />
             <button>Search</button>
             <div className="shuffle" onClick={shuffleBtn}>
@@ -84,10 +96,13 @@ function App() {
         </article>
         <Location location={location} />
         <section className="App__container">
-          <h2 className="population">No hay residentes aquí.</h2>
-          {location?.residents.map((URL) => (
-            <ResidentInfo key={URL} URL={URL} />
-          ))}
+          {isEmpty ? (
+            <h2 className="empty">No residents in this location</h2>
+          ) : (
+            location?.residents.map((URL) => (
+              <ResidentInfo key={URL} URL={URL} />
+            ))
+          )}
         </section>
         <footer>Miguel Muñiz | Academlo ©</footer>
       </section>

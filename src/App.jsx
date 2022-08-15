@@ -69,7 +69,6 @@ function App() {
       <section className="App">
         <div className="App__header"></div>
         <article className="search">
-          <h1 className="search__title">Rick and Morty</h1>
           <form onSubmit={handleSubmit}>
             <input
               id="search"

@@ -11,17 +11,18 @@ let ID;
 function App() {
   const [location, setLocation] = useState();
   const [search, setSearch] = useState("");
-  const [shuffle, setShuffle] = useState(false);
-  const [loading, setLoading] = useState(true);
-
+  const [shuffle, setShuffle] = useState(true);
+  const [loading, setLoading] = useState();
+  
   useEffect(() => {
+
     if (search === "") {
       ID = randomID();
     } else {
       if (search > 0 && search <= 126) {
         ID = search;
       } else {
-        alert("Invalido. ingrese un numero del 1 al 126.");
+        alert("Ingresa un numero del 1 al 126")
       }
     }
 
@@ -39,22 +40,25 @@ function App() {
   let intervalLoading;
 
   const loadingTimeout = () => {
-    intervalLoading = window.setTimeout(changeLoading, 1800);
+    setLoading(true);
+    intervalLoading = window.setTimeout(changeLoading, 1500);
   };
 
   const changeLoading = () => {
-    setLoading(!loading);
+    setLoading(false);
     intervalLoading = window.clearTimeout();
   };
 
   const handleSubmit = (e) => {
     const value = e.target.search.value;
     e.preventDefault();
-    setSearch(value);
+      setSearch(value);
+      e.target.reset();
   };
 
   const shuffleBtn = () => {
     setShuffle(!shuffle);
+    setSearch("");
   };
 
   // console.log(location);
@@ -80,7 +84,7 @@ function App() {
         <section className="App__container">
           <h2 className="population">No hay residentes aquí.</h2>
           {location?.residents.map((URL) => (
-            <CardResident key={URL} URL={URL} />  
+            <CardResident key={URL} URL={URL} />
           ))}
         </section>
         <footer>Miguel Muñiz | Academlo ©</footer>

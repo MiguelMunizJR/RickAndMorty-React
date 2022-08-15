@@ -38,7 +38,7 @@ const CardResident = ({ URL }) => {
           <h3 className="status__title">{resident?.status}</h3>
         </div>
         <div className="Card__img">
-          <img src={resident?.image} alt="" />
+          <img src={resident?.image} alt={`image of ${resident?.name}`} />
         </div>
       </header>
       <h2 className="Card__title">{resident?.name}</h2>

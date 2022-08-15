@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Location from "./components/Location";
 import "./App.css";
-import CardResident from "./components/CardResident";
+import ResidentInfo from "./components/ResidentInfo";
 import axios from "axios";
 import Loading from "./components/Loading";
 
@@ -13,16 +13,15 @@ function App() {
   const [search, setSearch] = useState("");
   const [shuffle, setShuffle] = useState(true);
   const [loading, setLoading] = useState();
-  
-  useEffect(() => {
 
+  useEffect(() => {
     if (search === "") {
       ID = randomID();
     } else {
       if (search > 0 && search <= 126) {
         ID = search;
       } else {
-        alert("Ingresa un numero del 1 al 126")
+        alert("Enter an ID number from 1 to 126");
       }
     }
 
@@ -41,7 +40,7 @@ function App() {
 
   const loadingTimeout = () => {
     setLoading(true);
-    intervalLoading = window.setTimeout(changeLoading, 1500);
+    intervalLoading = window.setTimeout(changeLoading, 1800);
   };
 
   const changeLoading = () => {
@@ -52,8 +51,8 @@ function App() {
   const handleSubmit = (e) => {
     const value = e.target.search.value;
     e.preventDefault();
-      setSearch(value);
-      e.target.reset();
+    setSearch(value);
+    e.target.reset();
   };
 
   const shuffleBtn = () => {
@@ -72,8 +71,12 @@ function App() {
         <article className="search">
           <h1 className="search__title">Rick and Morty</h1>
           <form onSubmit={handleSubmit}>
-            <h5>Search with number ID:</h5>
-            <input id="search" type="text" />
+            <input
+              id="search"
+              type="text"
+              placeholder="Search with number ID:
+"
+            />
             <button>Search</button>
             <div className="shuffle" onClick={shuffleBtn}>
               <i className="fa-solid fa-shuffle"></i>
@@ -84,7 +87,7 @@ function App() {
         <section className="App__container">
           <h2 className="population">No hay residentes aquí.</h2>
           {location?.residents.map((URL) => (
-            <CardResident key={URL} URL={URL} />
+            <ResidentInfo key={URL} URL={URL} />
           ))}
         </section>
         <footer>Miguel Muñiz | Academlo ©</footer>

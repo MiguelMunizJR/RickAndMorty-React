@@ -12,7 +12,6 @@ const Loading = () => {
         <img
           src="https://i.postimg.cc/MG8QRmZG/LoadIcon.png"
           alt="Loading-icon"
-          srcset=""
         />
       </div>
     </div>

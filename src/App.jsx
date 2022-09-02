@@ -92,6 +92,8 @@ function App() {
     setSearch("");
   };
 
+  // console.log(location);
+
   if (loading) {
     return <Loading />;
   } else {

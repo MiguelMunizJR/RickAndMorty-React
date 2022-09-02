@@ -443,10 +443,19 @@ footer {
   .Card__img img {
     width: 100%;
   }
+
+  .loading__title {
+    width: 90vw;
+  }
+
+  .loading__circle img {
+    margin-top: 10rem;
+    width: 25rem;
+    height: 14rem;
+  }
 }
 
 @media screen and (max-width: 530px) {
-
   .location__title {
     font-size: 1.3rem;
   }
@@ -466,5 +475,15 @@ footer {
 
   .App__container {
     margin-top: 5rem;
+  }
+
+  .loading__title {
+    width: 90vw;
+  }
+
+  .loading__circle img {
+    margin-top: 10rem;
+    width: 19rem;
+    height: 10rem;
   }
 }

@@ -10,7 +10,11 @@ const Pagination = ({ totalResidents, residentsPerPage, setCurrentPage }) => {
   return (
     <div className="pagination">
       {pages.map((page, index) => {
-        return <button key={index} onClick={()=> setCurrentPage(page)} >{page}</button>;
+        return (
+          <button key={index} onClick={() => setCurrentPage(page)}>
+            {page}
+          </button>
+        );
       })}
     </div>
   );
